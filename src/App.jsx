@@ -2,7 +2,6 @@ import Player from "./components/Player";
 
 function App() {
 
-
   return (
     <main>
       <div id="game-container">
@@ -19,3 +18,7 @@ function App() {
 }
 
 export default App
+
+
+
+// npm run dev
