@@ -1,3 +1,5 @@
+import { useState } from "react"
+
 const initialGameBoard = [
     [null, null, null],
     [null, null, null],
@@ -5,14 +7,23 @@ const initialGameBoard = [
 ]
 
 const GameBoard = () => {
+    const [gameBoard, setGameBoard] = useState(initialGameBoard);
+
+    const handlePlayerSelection = (rowIdx, colIdx) => {
+        let updatedGameBoard = [...initialGameBoard];
+        updatedGameBoard[rowIdx][colIdx] = "X";
+        setGameBoard([...updatedGameBoard]);
+    }
+
+
     return (
         <ol id='game-board'>
-            {initialGameBoard.map((row, rowIdx) => (
+            {gameBoard.map((row, rowIdx) => (
                 <li key={rowIdx}>
                     <ol>
                         {row.map((playerSymbol, colIdx) => (
                             <li>
-                                <button key={colIdx}>{playerSymbol}</button>
+                                <button onClick={() => handlePlayerSelection(rowIdx, colIdx)} key={colIdx}>{playerSymbol}</button>
                             </li>
                         ))}
                     </ol>
