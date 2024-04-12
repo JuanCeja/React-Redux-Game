@@ -5,7 +5,7 @@ const initialGameBoard = [
     [null, null, null]
 ]
 
-const GameBoard = ({ onSelectSquare }) => {
+const GameBoard = ({ onSelectSquare, turns }) => {
     // const [gameBoard, setGameBoard] = useState(initialGameBoard);
 
     // const handleSelectSquare = (rowIdx, colIdx) => {
@@ -18,6 +18,13 @@ const GameBoard = ({ onSelectSquare }) => {
     //     onSelectSquare();
     // }
 
+    let gameBoard = initialGameBoard;
+
+    for (const turn of turns) {
+        const { square, player } = turn;
+        const { row, col } = square;
+        gameBoard[row][col] = player;
+    }
 
     return (
         <ol id='game-board'>
