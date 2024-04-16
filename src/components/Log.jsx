@@ -4,9 +4,9 @@ const Log = ({ turns }) => {
 
     return (
         <ol id="log">
-            {turns.map(turn => (
+            {turns.map(({player, square: {row, col}}) => (
                 <li>
-                    <p>Player {turn.player} choose square {turn.square.row}, {turn.square.col}</p>
+                    <p>Player {player} choose square {row}, {col}</p>
                 </li>
             ))}
         </ol>
