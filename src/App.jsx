@@ -4,13 +4,19 @@ import Player from "./components/Player";
 import GameBoard from "./components/GameBoard";
 import Log from "./components/Log";
 
+const deriveActivePlayer = (gameTurns) => {
+  let currentPlayer = "X";
+  if (gameTurns.length > 0 && gameTurns[0].player === "X") currentPlayer = "O";
+  return currentPlayer;
+}
+
 function App() {
   const [gameTurns, setGameTurns] = useState([]);
-  const [activePlayer, setActivePlayer] = useState("X");
+
+  const activePlayer = deriveActivePlayer(gameTurns);
+  console.log('activePlayer =',activePlayer);
 
   const handleSelectSquare = (rowIdx, colIdx) => {
-    setActivePlayer(currActivePlayer => currActivePlayer === "X" ? "O" : "X");
-
     setGameTurns(prevTurns => {
       let currentPlayer = "X";
 
@@ -53,5 +59,3 @@ export default App
 
 
 // npm run dev
-
-// before starting 85 create the log component on your own. the log component just gives the info of what place was selected and by which player
